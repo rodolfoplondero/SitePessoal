@@ -6,7 +6,7 @@ Finish and ship the in-flight theme-toggle work (PR #8), then keep the site in a
 
 ## Phases
 
-- [ ] **Phase 1: Ship theme toggle** - Finish wiring `ProcessFlow`, verify theme toggle works in both directions, merge PR #8
+- [x] **Phase 1: Ship theme toggle** - Finish wiring `ProcessFlow`, verify theme toggle works in both directions, merge PR #8
 
 ## Phase Details
 
@@ -23,7 +23,7 @@ Finish and ship the in-flight theme-toggle work (PR #8), then keep the site in a
 **Plans**: TBD
 
 Plans:
-- [ ] 01-01: Wire ProcessFlow into App.jsx, verify theme toggle end-to-end, merge PR #8
+- [x] 01-01: Wire ProcessFlow into App.jsx, verify theme toggle end-to-end, merge PR #8
 
 ## Progress
 
@@ -32,4 +32,4 @@ Phase 1 only (single-phase milestone)
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Ship theme toggle | 0/1 | Not started | - |
+| 1. Ship theme toggle | 1/1 | Complete | 2026-07-30 |
