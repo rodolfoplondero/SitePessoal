@@ -7,7 +7,7 @@ export const profile = {
   email: 'rodolfopl@gmail.com',
   github: 'https://github.com/rodolfoplondero',
   linkedin: 'https://www.linkedin.com/in/rodolfoplondero',
-  resumeFile: '/resume.pdf',
+  resumeFile: `${import.meta.env.BASE_URL}resume.pdf`,
 }
 
 export const about = `Sou desenvolvedor com experiência em construir aplicações web completas,
