@@ -1,13 +1,13 @@
 export const profile = {
   name: 'Rodolfo Londero',
   initials: 'RL',
-  role: 'Senior RPA Engineer | UiPath Specialist',
+  role: 'Senior RPA Engineer | UiPath Specialist | Technical Lead',
   tagline:
     'Arquiteto e desenvolvo automações corporativas de ponta a ponta com UiPath, C#/.NET e integrações via API — do design à governança em produção.',
-  location: 'Santa Maria, Rio Grande do Sul, Brasil',
+  location: 'Alegrete, Rio Grande do Sul, Brasil',
   email: 'rodolfopl@gmail.com',
   github: 'https://github.com/rodolfoplondero',
-  linkedin: 'https://www.linkedin.com/in/rodolfoplondero',
+  linkedin: 'https://www.linkedin.com/in/rodolfolondero',
   resumeFile: `${import.meta.env.BASE_URL}resume.pdf`,
 }
 
@@ -31,6 +31,10 @@ export const skills = [
   {
     category: 'Integrações & DevOps',
     items: ['SQL', 'API REST', 'SAP', 'SharePoint', 'Azure DevOps', 'Git'],
+  },
+  {
+    category: 'IA & Claude Code',
+    items: ['Anthropic Claude', 'Claude Skills', 'Claude Code Subagents'],
   },
 ]
 
@@ -63,9 +67,16 @@ export const projects = [
 
 export const experience = [
   {
+    role: 'Senior RPA Developer',
+    company: 'TQA',
+    period: 'Abr 2026 — atual',
+    description:
+      'Atuação como Senior RPA Developer, aplicando arquitetura UiPath, integrações via API e boas práticas de engenharia em iniciativas corporativas de automação.',
+  },
+  {
     role: 'ITS Analyst (RPA / Automation Engineer)',
     company: 'Ball Corporation',
-    period: 'Jun 2023 — atual',
+    period: 'Jun 2023 — Abr 2026',
     description:
       'Suporte e evolução de um portfólio de 200+ automações em produção, com soluções UiPath (REFramework) sobre .NET, integrações via API (SAP, SharePoint, SuccessFactors, Microsoft 365) e liderança técnica do time de automação — da arquitetura ao code review.',
   },
