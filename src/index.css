@@ -299,6 +299,7 @@ ul, ol {
   color: var(--color-text-muted);
   font-weight: 400;
   font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .navbar__links {

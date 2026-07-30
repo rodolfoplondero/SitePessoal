@@ -11,6 +11,8 @@ export const profile = {
   resumeFile: `${import.meta.env.BASE_URL}resume.pdf`,
   bootLine: '$ whoami → Senior RPA Engineer',
   processMeta: 'uptime: 2y 4m',
+  timezone: 'America/Sao_Paulo',
+  locale: 'pt-BR',
 }
 
 export const about = `Sou Engenheiro de RPA sênior, especializado em UiPath, com experiência no desenho,

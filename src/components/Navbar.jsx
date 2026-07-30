@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import useTheme from '../hooks/useTheme'
+import useClock from '../hooks/useClock'
 import { profile } from '../data'
 
 const links = [
@@ -15,6 +16,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
   const [theme, toggleTheme] = useTheme()
+  const clock = useClock(profile.timezone, profile.locale)
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
@@ -70,7 +72,7 @@ export default function Navbar() {
           >
             RL-01
           </a>
-          <span className="navbar__brand-clock" />
+          <span className="navbar__brand-clock">{clock}</span>
         </span>
 
         <nav className={`navbar__links ${open ? 'is-open' : ''}`}>
