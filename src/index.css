@@ -6,6 +6,7 @@
   --color-accent: #0f6e5c;
   --color-accent-strong: #0b5347;
   --color-accent-soft: rgba(15, 110, 92, 0.12);
+  --color-on-accent: #ffffff;
   --color-border: #e6e1d3;
   --max-width: 1080px;
   --font-display: 'Fraunces', Georgia, serif;
@@ -24,6 +25,7 @@
     --color-accent: #35d0b8;
     --color-accent-strong: #6fe3d1;
     --color-accent-soft: rgba(53, 208, 184, 0.14);
+    --color-on-accent: #0b1a17;
     --color-border: #2c2820;
     color-scheme: dark;
   }
@@ -37,6 +39,7 @@
   --color-accent: #35d0b8;
   --color-accent-strong: #6fe3d1;
   --color-accent-soft: rgba(53, 208, 184, 0.14);
+  --color-on-accent: #0b1a17;
   --color-border: #2c2820;
   color-scheme: dark;
 }
@@ -49,6 +52,7 @@
   --color-accent: #0f6e5c;
   --color-accent-strong: #0b5347;
   --color-accent-soft: rgba(15, 110, 92, 0.12);
+  --color-on-accent: #ffffff;
   --color-border: #e6e1d3;
   color-scheme: light;
 }
@@ -361,7 +365,7 @@ ul, ol {
 
 .btn--primary {
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-on-accent);
   box-shadow: 0 8px 20px -10px var(--color-accent);
 }
 
