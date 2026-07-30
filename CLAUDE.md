@@ -6,8 +6,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A single-page personal landing page (résumé + portfolio) for Rodolfo Londero, built with React + Vite and deployed to GitHub Pages. There is no backend — it's a static site.
 
-The repo root is the active app. `_old/` contains an archived Laravel (PHP) project and a Django (Python) project that predate this rebuild — they are not part of the active site and should not be developed further; they're kept only for history.
-
 ## Commands
 
 ```bash
@@ -36,4 +34,4 @@ There is no test suite configured in this repo.
 
 **Deployment.** `.github/workflows/deploy.yml` builds and publishes to GitHub Pages via `actions/deploy-pages` on push to `master` (or manual `workflow_dispatch`). The repo's Pages source **must** be set to "GitHub Actions" in Settings → Pages — if it's left on the legacy "Deploy from a branch" setting, GitHub's built-in branch-based Pages build also fires on the same push and races with this workflow, non-deterministically serving the raw unbuilt `index.html` instead of the compiled app.
 
-**ESLint flat config gotcha.** `eslint.config.js` includes `eslint-plugin-react`'s recommended rules (not just `react-hooks`/`react-refresh`) specifically because plain `no-unused-vars` does not recognize a component as "used" when it only appears as a JSX tag (`<Foo />`) — without `eslint-plugin-react`, every imported component gets flagged as unused. `dist` and `_old` are excluded from linting.
+**ESLint flat config gotcha.** `eslint.config.js` includes `eslint-plugin-react`'s recommended rules (not just `react-hooks`/`react-refresh`) specifically because plain `no-unused-vars` does not recognize a component as "used" when it only appears as a JSX tag (`<Foo />`) — without `eslint-plugin-react`, every imported component gets flagged as unused. `dist` is excluded from linting.
