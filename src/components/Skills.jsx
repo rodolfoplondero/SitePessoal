@@ -11,6 +11,9 @@ const categoryIcons = {
 export default function Skills() {
   return (
     <section id="skills" className="section">
+      <Reveal as="p" className="queue-tag">
+        QUEUE: SKILLS
+      </Reveal>
       <Reveal as="h2" className="section__title">
         Skills
       </Reveal>
@@ -24,8 +27,10 @@ export default function Skills() {
                 {group.category}
               </h3>
               <ul>
-                {group.items.map((item) => (
-                  <li key={item}>{item}</li>
+                {group.items.map((item, j) => (
+                  <li key={item} style={{ '--stagger': j }}>
+                    {item}
+                  </li>
                 ))}
               </ul>
             </Reveal>
