@@ -1,5 +1,5 @@
 import { profile } from '../data'
-import Avatar from './Avatar'
+import ProcessFlow from './ProcessFlow'
 import { DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon } from '../icons'
 
 export default function Hero() {
@@ -10,7 +10,9 @@ export default function Hero() {
 
       <div className="hero__grid">
         <div className="hero__content">
-          <p className="hero__eyebrow">Olá, eu sou</p>
+          <p className="hero__eyebrow">
+            PROCESS // <span className="status-pill status-pill--run">● RUNNING</span>
+          </p>
           <h1>{profile.name}</h1>
           <h2>{profile.role}</h2>
           <p className="hero__tagline">{profile.tagline}</p>
@@ -42,7 +44,7 @@ export default function Hero() {
         </div>
 
         <div className="hero__visual">
-          <Avatar initials={profile.initials} name={profile.name} />
+          <ProcessFlow name={profile.name} />
         </div>
       </div>
     </section>

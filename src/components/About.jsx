@@ -4,6 +4,9 @@ import Reveal from './Reveal'
 export default function About() {
   return (
     <section id="sobre" className="section">
+      <Reveal as="p" className="queue-tag">
+        QUEUE: SOBRE
+      </Reveal>
       <Reveal as="h2" className="section__title">
         Sobre mim
       </Reveal>

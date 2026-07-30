@@ -5,6 +5,9 @@ import { GitHubIcon, LinkedInIcon, MailIcon } from '../icons'
 export default function Contact() {
   return (
     <section id="contato" className="section">
+      <Reveal as="p" className="queue-tag">
+        QUEUE: CONTATO
+      </Reveal>
       <Reveal as="h2" className="section__title">
         Contato
       </Reveal>

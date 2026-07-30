@@ -5,6 +5,9 @@ import { BriefcaseIcon, GraduationCapIcon } from '../icons'
 export default function Resume() {
   return (
     <section id="curriculo" className="section">
+      <Reveal as="p" className="queue-tag">
+        QUEUE: CURRÍCULO
+      </Reveal>
       <Reveal as="h2" className="section__title">
         Currículo
       </Reveal>
@@ -16,14 +19,20 @@ export default function Resume() {
             Experiência
           </h3>
           <ol className="timeline">
-            {experience.map((item) => (
-              <li key={`${item.role}-${item.company}`}>
-                <span className="timeline__period">{item.period}</span>
-                <strong>{item.role}</strong>
-                <span className="timeline__place">{item.company}</span>
-                <p>{item.description}</p>
-              </li>
-            ))}
+            {experience.map((item) => {
+              const isActive = /atual/i.test(item.period)
+              return (
+                <li key={`${item.role}-${item.company}`} className={isActive ? 'is-active' : ''}>
+                  <span className="timeline__period">
+                    {item.period}
+                    {isActive && <span className="status-pill status-pill--run">● ativo</span>}
+                  </span>
+                  <strong>{item.role}</strong>
+                  <span className="timeline__place">{item.company}</span>
+                  <p>{item.description}</p>
+                </li>
+              )
+            })}
           </ol>
         </Reveal>
 

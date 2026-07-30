@@ -5,6 +5,9 @@ import { ExternalLinkIcon, GitHubIcon } from '../icons'
 export default function Projects() {
   return (
     <section id="projetos" className="section">
+      <Reveal as="p" className="queue-tag">
+        QUEUE: PROJETOS
+      </Reveal>
       <Reveal as="h2" className="section__title">
         Projetos
       </Reveal>

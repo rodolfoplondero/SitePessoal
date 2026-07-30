@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { profile } from '../data'
+import useTheme from '../hooks/useTheme'
 
 const links = [
   { href: '#sobre', label: 'Sobre' },
@@ -13,6 +13,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
+  const [theme, toggleTheme] = useTheme()
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
@@ -46,11 +47,21 @@ export default function Navbar() {
     return () => observer.disconnect()
   }, [])
 
+  const handleNavClick = (event, href) => {
+    const target = document.querySelector(href)
+    if (target) {
+      event.preventDefault()
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      history.pushState(null, '', href)
+    }
+    setOpen(false)
+  }
+
   return (
     <header className={`navbar ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="navbar__inner">
-        <a href="#top" className="navbar__brand" onClick={() => setOpen(false)}>
-          {profile.name}
+        <a href="#top" className="navbar__brand" onClick={(e) => handleNavClick(e, '#top')}>
+          RL-01
         </a>
 
         <nav className={`navbar__links ${open ? 'is-open' : ''}`}>
@@ -59,12 +70,31 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={active === link.href ? 'is-active' : ''}
-              onClick={() => setOpen(false)}
+              onClick={(e) => handleNavClick(e, link.href)}
             >
               {link.label}
             </a>
           ))}
         </nav>
+
+        <button
+          type="button"
+          className="theme-switch"
+          role="switch"
+          aria-checked={theme === 'dark'}
+          aria-label="Alternar modo claro/escuro"
+          onClick={toggleTheme}
+        >
+          <span className="theme-switch__track">
+            <span className="theme-switch__thumb" />
+          </span>
+          <span className="theme-switch__label">{theme === 'dark' ? 'dark' : 'light'}</span>
+        </button>
+
+        <span className="navbar__status" aria-hidden="true">
+          <span className="navbar__status-dot" />
+          online
+        </span>
 
         <button
           type="button"

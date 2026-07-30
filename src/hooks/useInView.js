@@ -14,10 +14,7 @@ export default function useInView(options) {
     }
 
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setInView(true)
-        observer.disconnect()
-      }
+      setInView(entry.isIntersecting)
     }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px', ...options })
 
     observer.observe(node)
