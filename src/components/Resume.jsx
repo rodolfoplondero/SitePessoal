@@ -1,12 +1,15 @@
 import { education, experience } from '../data'
+import Reveal from './Reveal'
 
 export default function Resume() {
   return (
     <section id="curriculo" className="section">
-      <h2 className="section__title">Currículo</h2>
+      <Reveal as="h2" className="section__title">
+        Currículo
+      </Reveal>
 
       <div className="resume">
-        <div className="resume__column">
+        <Reveal as="div" className="resume__column">
           <h3>Experiência</h3>
           <ol className="timeline">
             {experience.map((item) => (
@@ -18,9 +21,9 @@ export default function Resume() {
               </li>
             ))}
           </ol>
-        </div>
+        </Reveal>
 
-        <div className="resume__column">
+        <Reveal as="div" className="resume__column" delay={120}>
           <h3>Formação</h3>
           <ol className="timeline">
             {education.map((item) => (
@@ -31,7 +34,7 @@ export default function Resume() {
               </li>
             ))}
           </ol>
-        </div>
+        </Reveal>
       </div>
     </section>
   )
