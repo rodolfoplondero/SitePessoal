@@ -1,5 +1,6 @@
 export const profile = {
   name: 'Rodolfo Londero',
+  initials: 'RL',
   role: 'Desenvolvedor de Software',
   tagline:
     'Construo aplicações web do frontend ao backend, com foco em código limpo e experiências rápidas.',

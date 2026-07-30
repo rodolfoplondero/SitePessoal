@@ -1,5 +1,6 @@
 import { education, experience } from '../data'
 import Reveal from './Reveal'
+import { BriefcaseIcon, GraduationCapIcon } from '../icons'
 
 export default function Resume() {
   return (
@@ -10,7 +11,10 @@ export default function Resume() {
 
       <div className="resume">
         <Reveal as="div" className="resume__column">
-          <h3>Experiência</h3>
+          <h3>
+            <BriefcaseIcon className="icon" />
+            Experiência
+          </h3>
           <ol className="timeline">
             {experience.map((item) => (
               <li key={`${item.role}-${item.company}`}>
@@ -24,7 +28,10 @@ export default function Resume() {
         </Reveal>
 
         <Reveal as="div" className="resume__column" delay={120}>
-          <h3>Formação</h3>
+          <h3>
+            <GraduationCapIcon className="icon" />
+            Formação
+          </h3>
           <ol className="timeline">
             {education.map((item) => (
               <li key={`${item.degree}-${item.institution}`}>
