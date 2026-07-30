@@ -3,6 +3,9 @@ import { profile } from '../data'
 export default function Hero() {
   return (
     <section id="top" className="hero">
+      <span className="hero__blob hero__blob--a" aria-hidden="true" />
+      <span className="hero__blob hero__blob--b" aria-hidden="true" />
+
       <div className="hero__content">
         <p className="hero__eyebrow">Olá, eu sou</p>
         <h1>{profile.name}</h1>

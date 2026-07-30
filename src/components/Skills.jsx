@@ -1,19 +1,22 @@
 import { skills } from '../data'
+import Reveal from './Reveal'
 
 export default function Skills() {
   return (
     <section id="skills" className="section">
-      <h2 className="section__title">Skills</h2>
+      <Reveal as="h2" className="section__title">
+        Skills
+      </Reveal>
       <div className="skills">
-        {skills.map((group) => (
-          <div key={group.category} className="skills__group">
+        {skills.map((group, i) => (
+          <Reveal key={group.category} className="skills__group" delay={i * 100}>
             <h3>{group.category}</h3>
             <ul>
               {group.items.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

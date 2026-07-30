@@ -1,10 +1,13 @@
 import { profile } from '../data'
+import Reveal from './Reveal'
 
 export default function Contact() {
   return (
     <section id="contato" className="section">
-      <h2 className="section__title">Contato</h2>
-      <div className="contact">
+      <Reveal as="h2" className="section__title">
+        Contato
+      </Reveal>
+      <Reveal className="contact" delay={100}>
         <p>Vamos conversar? Fico à disposição por email ou redes sociais.</p>
         <div className="contact__links">
           <a className="btn btn--primary" href={`mailto:${profile.email}`}>
@@ -17,7 +20,7 @@ export default function Contact() {
             GitHub
           </a>
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }

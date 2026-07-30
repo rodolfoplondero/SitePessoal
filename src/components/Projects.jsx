@@ -1,12 +1,15 @@
 import { projects } from '../data'
+import Reveal from './Reveal'
 
 export default function Projects() {
   return (
     <section id="projetos" className="section">
-      <h2 className="section__title">Projetos</h2>
+      <Reveal as="h2" className="section__title">
+        Projetos
+      </Reveal>
       <div className="projects">
-        {projects.map((project) => (
-          <article key={project.title} className="project-card">
+        {projects.map((project, i) => (
+          <Reveal key={project.title} as="article" className="project-card" delay={i * 100}>
             <h3>{project.title}</h3>
             <p>{project.description}</p>
             <ul className="project-card__tags">
@@ -26,7 +29,7 @@ export default function Projects() {
                 </a>
               )}
             </div>
-          </article>
+          </Reveal>
         ))}
       </div>
     </section>
