@@ -43,12 +43,12 @@ Plans:
   4. A live page-view count (via GoatCounter) renders somewhere visible (navbar status or queue tag)
   5. Hover states on nav/section-index elements reveal console-style `$` affordances, matching Sketch A
 
-**Plans**: 1/3 plans executed
+**Plans**: 2/3 plans executed
 
 Plans:
 
 - [x] 02-01-PLAN.md
-- [ ] 02-02-PLAN.md
+- [x] 02-02-PLAN.md
 - [ ] 02-03-PLAN.md
 - [x] 02-01: Console aesthetic — CRT scanline overlay, hero typewriter boot line, `$` hover affordances, hover-reveal process chip (IMM-01, IMM-02, IMM-05)
 - [ ] 02-02: Live data — `useClock` Alegrete clock in the process chip, `useViewCount` GoatCounter counter in the footer (IMM-03, IMM-04)
@@ -62,4 +62,4 @@ Phase 1 → Phase 2
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Ship theme toggle | 1/1 | Complete | 2026-07-30 |
-| 2. Console immersion | 1/3 | In Progress|  |
+| 2. Console immersion | 2/3 | In Progress|  |

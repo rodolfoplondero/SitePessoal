@@ -20,8 +20,8 @@
 
 - [x] **IMM-01**: Site has a subtle CRT scanline overlay, disabled under `prefers-reduced-motion`
 - [x] **IMM-02**: Hero eyebrow/boot line plays a typewriter reveal on load
-- [ ] **IMM-03**: Process-ID chip shows a real, ticking local clock (Alegrete timezone)
-- [ ] **IMM-04**: A live page-view count (GoatCounter) renders on the site
+- [x] **IMM-03**: Process-ID chip shows a real, ticking local clock (Alegrete timezone)
+- [x] **IMM-04**: A live page-view count (GoatCounter) renders on the site
 - [x] **IMM-05**: Nav/section-index hover states show console-style `$` affordances
 
 ## v2 Requirements
@@ -53,8 +53,8 @@ Deferred to future release. Tracked but not in current roadmap.
 | CONT-02 | Phase 1 | Complete |
 | IMM-01 | Phase 2 | Complete |
 | IMM-02 | Phase 2 | Complete |
-| IMM-03 | Phase 2 | Pending |
-| IMM-04 | Phase 2 | Pending |
+| IMM-03 | Phase 2 | Complete |
+| IMM-04 | Phase 2 | Complete |
 | IMM-05 | Phase 2 | Complete |
 
 **Coverage:**

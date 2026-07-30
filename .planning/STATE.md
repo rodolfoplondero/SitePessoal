@@ -5,15 +5,15 @@ milestone_name: milestone
 current_phase: 02
 current_phase_name: console-immersion
 status: executing
-stopped_at: Completed 02-01-PLAN.md
-last_updated: "2026-07-30T19:51:58.592Z"
+stopped_at: Completed 02-02-PLAN.md
+last_updated: "2026-07-30T19:59:14.620Z"
 last_activity: 2026-07-30
 last_activity_desc: Phase 02 execution started
 progress:
   total_phases: 2
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
+  completed_plans: 2
 ---
 
 # Project State
@@ -28,11 +28,11 @@ See: .planning/PROJECT.md (updated 2026-07-30)
 ## Current Position
 
 Phase: 02 (console-immersion) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Status: Ready to execute
 Last activity: 2026-07-30 — Phase 02 execution started
 
-Progress: [███░░░░░░░] 33%
+Progress: [███████░░░] 67%
 
 ## Performance Metrics
 
@@ -59,6 +59,7 @@ Progress: [███░░░░░░░] 33%
 | Plan | Duration | Tasks | Files |
 |------|----------|-------|-------|
 | Phase 02 P01 | 6min | 3 tasks | 5 files |
+| Phase 02-console-immersion P02 | 5min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -67,6 +68,9 @@ Progress: [███░░░░░░░] 33%
 - Onboarding: Committed in-flight theme-toggle work to branch `theme-toggle` (PR #8) rather than master, before mapping codebase — see PROJECT.md Key Decisions.
 - [Phase 02]: CRT scanline light-theme tokens use dark lines + multiply blend (not Sketch A's white/overlay) since the dark mock is invisible on the light background
 - [Phase 02]: navbar__brand-clock left empty in 02-01 as a DOM contract for plan 02-02's live useClock hook
+- [Phase ?]: useClock formatter is memoized on [timeZone, locale] with a try/catch fallback to a zone-less Intl.DateTimeFormat so a rejected IANA zone string can never blank the navbar
+- [Phase ?]: useViewCount early-returns on a falsy goatCounterCode before constructing AbortController/fetch, keeping the site network-silent and console-clean pre-configuration
+- [Phase ?]: No SRI hash added to the commented GoatCounter count.js snippet in index.html — versionless rolling CDN URL per threat register T-02-04, and the tag is inert (commented out) in this plan
 
 ### Pending Todos
 
@@ -84,6 +88,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-07-30T19:51:58.576Z
-Stopped at: Completed 02-01-PLAN.md
+Last session: 2026-07-30T19:59:14.604Z
+Stopped at: Completed 02-02-PLAN.md
 Resume file: None
