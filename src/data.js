@@ -10,6 +10,7 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/rodolfolondero',
   resumeFile: `${import.meta.env.BASE_URL}resume.pdf`,
   bootLine: '$ whoami → Senior RPA Engineer',
+  processMeta: 'uptime: 2y 4m',
 }
 
 export const about = `Sou Engenheiro de RPA sênior, especializado em UiPath, com experiência no desenho,

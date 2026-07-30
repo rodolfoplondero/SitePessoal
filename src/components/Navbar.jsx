@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import useTheme from '../hooks/useTheme'
+import { profile } from '../data'
 
 const links = [
   { href: '#sobre', label: 'Sobre' },
@@ -60,9 +61,17 @@ export default function Navbar() {
   return (
     <header className={`navbar ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="navbar__inner">
-        <a href="#top" className="navbar__brand" onClick={(e) => handleNavClick(e, '#top')}>
-          RL-01
-        </a>
+        <span className="navbar__brand">
+          <a
+            href="#top"
+            className="navbar__brand-id"
+            data-hover={profile.processMeta}
+            onClick={(e) => handleNavClick(e, '#top')}
+          >
+            RL-01
+          </a>
+          <span className="navbar__brand-clock" />
+        </span>
 
         <nav className={`navbar__links ${open ? 'is-open' : ''}`}>
           {links.map((link) => (
