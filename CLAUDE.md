@@ -6,14 +6,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A single-page personal landing page (résumé + portfolio) for Rodolfo Londero, built with React + Vite and deployed to GitHub Pages. There is no backend — it's a static site.
 
-The repo root is the active app. `_old/` contains an archived Laravel (PHP) project and a Django (Python) project that predate this rebuild — they are not part of the active site and should not be developed further; they're kept only for history.
-
 ## Commands
 
 ```bash
 npm install       # install dependencies
 npm run dev       # start the Vite dev server
-npm run build     # production build to dist/ (sets base path, see below)
+npm run build     # production build to dist/
 npm run preview   # serve the production build locally
 npm run lint      # eslint .
 ```
@@ -32,8 +30,8 @@ There is no test suite configured in this repo.
 
 **Icons are hand-rolled, not a library.** `src/icons.jsx` exports all SVG icon components used across the site (brand marks for GitHub/LinkedIn, plus a small set of line icons). There's no icon package dependency — add new icons here in the same style (24x24 viewBox, `currentColor`) rather than pulling in a library.
 
-**GitHub Pages base path.** This is a *project* Pages site (`rodolfoplondero.github.io/SitePessoal/`), not a user/org root site, so `vite.config.js` sets `base: '/SitePessoal/'` only when running `vite build` (dev stays at `/`). Any asset referenced by absolute path needs to respect this — e.g. `profile.resumeFile` in `data.js` is built from `import.meta.env.BASE_URL` rather than a hard-coded `/resume.pdf`.
+**GitHub Pages base path.** The repo is named `rodolfoplondero.github.io`, so GitHub treats it as a *user* Pages site served from the domain root (`https://rodolfoplondero.github.io/`) rather than a project subpath — `vite.config.js` has no `base` override. Assets are still referenced relative to `import.meta.env.BASE_URL` (e.g. `profile.resumeFile` in `data.js`) rather than hard-coded absolute paths, so the site would keep working unmodified if the repo were ever renamed back to a project-page name.
 
 **Deployment.** `.github/workflows/deploy.yml` builds and publishes to GitHub Pages via `actions/deploy-pages` on push to `master` (or manual `workflow_dispatch`). The repo's Pages source **must** be set to "GitHub Actions" in Settings → Pages — if it's left on the legacy "Deploy from a branch" setting, GitHub's built-in branch-based Pages build also fires on the same push and races with this workflow, non-deterministically serving the raw unbuilt `index.html` instead of the compiled app.
 
-**ESLint flat config gotcha.** `eslint.config.js` includes `eslint-plugin-react`'s recommended rules (not just `react-hooks`/`react-refresh`) specifically because plain `no-unused-vars` does not recognize a component as "used" when it only appears as a JSX tag (`<Foo />`) — without `eslint-plugin-react`, every imported component gets flagged as unused. `dist` and `_old` are excluded from linting.
+**ESLint flat config gotcha.** `eslint.config.js` includes `eslint-plugin-react`'s recommended rules (not just `react-hooks`/`react-refresh`) specifically because plain `no-unused-vars` does not recognize a component as "used" when it only appears as a JSX tag (`<Foo />`) — without `eslint-plugin-react`, every imported component gets flagged as unused. `dist` is excluded from linting.
