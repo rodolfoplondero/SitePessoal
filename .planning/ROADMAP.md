@@ -7,6 +7,7 @@ Finish and ship the in-flight theme-toggle work (PR #8), then keep the site in a
 ## Phases
 
 - [x] **Phase 1: Ship theme toggle** - Finish wiring `ProcessFlow`, verify theme toggle works in both directions, merge PR #8
+- [ ] **Phase 2: Console immersion** - Add console/terminal micro-interactions (scanline, typewriter, hover reveals) plus real live data (local clock, GoatCounter page views)
 
 ## Phase Details
 
@@ -25,11 +26,27 @@ Finish and ship the in-flight theme-toggle work (PR #8), then keep the site in a
 Plans:
 - [x] 01-01: Wire ProcessFlow into App.jsx, verify theme toggle end-to-end, merge PR #8
 
+### Phase 2: Console immersion
+**Goal**: Site feels like a live terminal — CSS/JS micro-interactions from Sketch A applied, plus real local-time clock and a live page-view counter via GoatCounter
+**Depends on**: Phase 1
+**Requirements**: IMM-01, IMM-02, IMM-03, IMM-04, IMM-05
+**Success Criteria** (what must be TRUE):
+  1. Subtle CRT scanline overlay is visible site-wide, disabled under `prefers-reduced-motion`
+  2. Hero eyebrow/boot line types out on load (typewriter effect)
+  3. Navbar/hero process-ID chip shows a real, ticking local clock (Alegrete time)
+  4. A live page-view count (via GoatCounter) renders somewhere visible (navbar status or queue tag)
+  5. Hover states on nav/section-index elements reveal console-style `$` affordances, matching Sketch A
+**Plans**: TBD
+
+Plans:
+- [ ] 02-01: TBD (planner fills in)
+
 ## Progress
 
 **Execution Order:**
-Phase 1 only (single-phase milestone)
+Phase 1 → Phase 2
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Ship theme toggle | 1/1 | Complete | 2026-07-30 |
+| 2. Console immersion | 0/1 | Not started | - |
