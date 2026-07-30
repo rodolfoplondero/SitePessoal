@@ -15,6 +15,9 @@
   --font-body: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --crt-line: rgba(0, 0, 0, 0.035);
+  --crt-blend: multiply;
+  --crt-opacity: 0.45;
   color-scheme: light;
 }
 
@@ -31,6 +34,9 @@
     --color-on-accent: #14100a;
     --color-run: #34d399;
     --color-border: #262f3d;
+    --crt-line: rgba(255, 255, 255, 0.025);
+    --crt-blend: overlay;
+    --crt-opacity: 0.5;
     color-scheme: dark;
   }
 }
@@ -47,6 +53,9 @@
   --color-on-accent: #14100a;
   --color-run: #34d399;
   --color-border: #262f3d;
+  --crt-line: rgba(255, 255, 255, 0.025);
+  --crt-blend: overlay;
+  --crt-opacity: 0.5;
   color-scheme: dark;
 }
 
@@ -62,6 +71,9 @@
   --color-on-accent: #ffffff;
   --color-run: #0e9f6e;
   --color-border: #dde3ea;
+  --crt-line: rgba(0, 0, 0, 0.035);
+  --crt-blend: multiply;
+  --crt-opacity: 0.45;
   color-scheme: light;
 }
 
@@ -117,6 +129,23 @@ ul, ol {
   width: 1.05em;
   height: 1.05em;
   flex-shrink: 0;
+}
+
+/* CRT scanline overlay */
+.crt {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--crt-line) 0px,
+    var(--crt-line) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: var(--crt-blend);
+  opacity: var(--crt-opacity);
 }
 
 /* Queue tag (section eyebrow) */
@@ -179,6 +208,9 @@ ul, ol {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .crt {
+    display: none;
   }
   * {
     animation-duration: 0.001ms !important;

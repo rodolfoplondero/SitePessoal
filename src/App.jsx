@@ -10,6 +10,7 @@ import Footer from './components/Footer'
 export default function App() {
   return (
     <>
+      <div className="crt" aria-hidden="true" />
       <Navbar />
       <main>
         <Hero />
