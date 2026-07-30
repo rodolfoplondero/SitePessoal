@@ -15,6 +15,13 @@ export const profile = {
   locale: 'pt-BR',
 }
 
+// goatCounterCode must also be set in index.html's commented GoatCounter
+// <script data-goatcounter> snippet — the two must match.
+export const analytics = {
+  goatCounterCode: '',
+  countPath: 'TOTAL',
+}
+
 export const about = `Sou Engenheiro de RPA sênior, especializado em UiPath, com experiência no desenho,
 desenvolvimento e suporte de automações de nível corporativo em ambientes complexos. Foco em
 soluções robustas e escaláveis com UiPath REFramework, estendidas por integrações via API e

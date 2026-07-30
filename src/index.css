@@ -170,6 +170,17 @@ ul, ol {
   flex-shrink: 0;
 }
 
+.queue-tag--views {
+  justify-content: center;
+  margin: 0.75rem 0 0;
+}
+
+.queue-tag__count {
+  color: var(--color-text-muted);
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
 /* Status pill */
 .status-pill {
   display: inline-flex;
