@@ -36,10 +36,12 @@ Plans:
   3. Navbar/hero process-ID chip shows a real, ticking local clock (Alegrete time)
   4. A live page-view count (via GoatCounter) renders somewhere visible (navbar status or queue tag)
   5. Hover states on nav/section-index elements reveal console-style `$` affordances, matching Sketch A
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: TBD (planner fills in)
+- [ ] 02-01: Console aesthetic — CRT scanline overlay, hero typewriter boot line, `$` hover affordances, hover-reveal process chip (IMM-01, IMM-02, IMM-05)
+- [ ] 02-02: Live data — `useClock` Alegrete clock in the process chip, `useViewCount` GoatCounter counter in the footer (IMM-03, IMM-04)
+- [ ] 02-03: GoatCounter activation with the user's site code, plus full visual sweep in both themes (IMM-01..IMM-05)
 
 ## Progress
 
@@ -49,4 +51,4 @@ Phase 1 → Phase 2
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Ship theme toggle | 1/1 | Complete | 2026-07-30 |
-| 2. Console immersion | 0/1 | Not started | - |
+| 2. Console immersion | 0/3 | Not started | - |
