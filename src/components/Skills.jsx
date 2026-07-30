@@ -3,9 +3,9 @@ import Reveal from './Reveal'
 import { MonitorIcon, ServerIcon, TerminalIcon } from '../icons'
 
 const categoryIcons = {
-  Frontend: MonitorIcon,
-  Backend: ServerIcon,
-  'Dados & Ferramentas': TerminalIcon,
+  'RPA & Automação': MonitorIcon,
+  'Linguagens & .NET': TerminalIcon,
+  'Integrações & DevOps': ServerIcon,
 }
 
 export default function Skills() {
