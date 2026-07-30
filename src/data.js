@@ -9,6 +9,7 @@ export const profile = {
   github: 'https://github.com/rodolfoplondero',
   linkedin: 'https://www.linkedin.com/in/rodolfolondero',
   resumeFile: `${import.meta.env.BASE_URL}resume.pdf`,
+  bootLine: '$ whoami → Senior RPA Engineer',
 }
 
 export const about = `Sou Engenheiro de RPA sênior, especializado em UiPath, com experiência no desenho,

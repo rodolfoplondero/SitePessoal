@@ -11,7 +11,13 @@ export default function Hero() {
       <div className="hero__grid">
         <div className="hero__content">
           <p className="hero__eyebrow">
-            PROCESS // <span className="status-pill status-pill--run">● RUNNING</span>
+            <span
+              className="hero__eyebrow-type"
+              style={{ '--type-chars': profile.bootLine.length }}
+            >
+              {profile.bootLine}
+            </span>
+            <span className="status-pill status-pill--run">● RUNNING</span>
           </p>
           <h1>{profile.name}</h1>
           <h2>{profile.role}</h2>
