@@ -25,20 +25,24 @@ export default function Projects() {
                   <li key={tag}>{tag}</li>
                 ))}
               </ul>
-              <div className="project-card__links">
-                {project.repo && (
-                  <a href={project.repo} target="_blank" rel="noreferrer">
-                    <GitHubIcon className="icon" />
-                    Código
-                  </a>
-                )}
-                {project.demo && (
-                  <a href={project.demo} target="_blank" rel="noreferrer">
-                    <ExternalLinkIcon className="icon" />
-                    Demo
-                  </a>
-                )}
-              </div>
+              {project.repo || project.demo ? (
+                <div className="project-card__links">
+                  {project.repo && (
+                    <a href={project.repo} target="_blank" rel="noreferrer">
+                      <GitHubIcon className="icon" />
+                      Código
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a href={project.demo} target="_blank" rel="noreferrer">
+                      <ExternalLinkIcon className="icon" />
+                      Demo
+                    </a>
+                  )}
+                </div>
+              ) : (
+                <p className="project-card__note">Projeto corporativo — detalhes confidenciais</p>
+              )}
             </div>
           </Reveal>
         ))}

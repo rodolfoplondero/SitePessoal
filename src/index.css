@@ -775,6 +775,13 @@ ul, ol {
   gap: 0.4rem;
 }
 
+.project-card__note {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
 /* Resume */
 .resume {
   display: grid;

@@ -40,27 +40,27 @@ export const skills = [
 
 export const projects = [
   {
-    title: 'Nome do Projeto 1',
+    title: 'Automação Financeira em Escala',
     description:
-      'Breve descrição do projeto: o problema que resolve e as principais tecnologias usadas.',
-    tags: ['React', 'Node.js'],
-    repo: 'https://github.com/rodolfoplondero',
+      'Portfólio de 200+ automações corporativas em produção, cobrindo processos de finanças, operações, RH e supply chain. Solução construída com UiPath REFramework e integrações via API para reduzir a dependência de interface e aumentar a estabilidade em ambientes críticos.',
+    tags: ['UiPath', 'REFramework', 'SAP', '.NET'],
+    repo: '',
     demo: '',
   },
   {
-    title: 'Nome do Projeto 2',
+    title: 'Automações Cross-Plataforma',
     description:
-      'Breve descrição do projeto: o problema que resolve e as principais tecnologias usadas.',
-    tags: ['Python', 'Django'],
-    repo: 'https://github.com/rodolfoplondero',
+      'Iniciativas de automação ponta a ponta integrando Salesforce, SAP, ServiceNow e Microsoft 365. Componentes customizados em C#, VB.NET e Python, com deploy em orquestradores cloud e on-premises e suporte contínuo em produção.',
+    tags: ['UiPath', 'Salesforce', 'C#', 'Python'],
+    repo: '',
     demo: '',
   },
   {
-    title: 'Nome do Projeto 3',
+    title: 'Biblioteca de Componentes Reutilizáveis',
     description:
-      'Breve descrição do projeto: o problema que resolve e as principais tecnologias usadas.',
-    tags: ['PHP', 'Laravel'],
-    repo: 'https://github.com/rodolfoplondero',
+      'Criação de bibliotecas reutilizáveis e padrões de code review para um time de automação, reduzindo retrabalho e padronizando entregas. Pipelines de CI/CD via Azure DevOps para versionamento e deploy controlado.',
+    tags: ['Azure DevOps', 'Git', 'UiPath', 'Governança'],
+    repo: '',
     demo: '',
   },
 ]
