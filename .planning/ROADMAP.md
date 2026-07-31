@@ -7,7 +7,7 @@ Finish and ship the in-flight theme-toggle work (PR #8), then keep the site in a
 ## Phases
 
 - [x] **Phase 1: Ship theme toggle** - Finish wiring `ProcessFlow`, verify theme toggle works in both directions, merge PR #8
-- [ ] **Phase 2: Console immersion** - Add console/terminal micro-interactions (scanline, typewriter, hover reveals) plus real live data (local clock, GoatCounter page views)
+- [x] **Phase 2: Console immersion** - Add console/terminal micro-interactions (scanline, typewriter, hover reveals) plus real live data (local clock, GoatCounter page views — deferred, see IMM-04)
 
 ## Phase Details
 
@@ -43,16 +43,16 @@ Plans:
   4. A live page-view count (via GoatCounter) renders somewhere visible (navbar status or queue tag)
   5. Hover states on nav/section-index elements reveal console-style `$` affordances, matching Sketch A
 
-**Plans**: 2/3 plans executed
+**Plans**: 3/3 plans executed (IMM-04 deferred — see plan 02-03 summary)
 
 Plans:
 
 - [x] 02-01-PLAN.md
 - [x] 02-02-PLAN.md
-- [ ] 02-03-PLAN.md
+- [x] 02-03-PLAN.md
 - [x] 02-01: Console aesthetic — CRT scanline overlay, hero typewriter boot line, `$` hover affordances, hover-reveal process chip (IMM-01, IMM-02, IMM-05)
-- [ ] 02-02: Live data — `useClock` Alegrete clock in the process chip, `useViewCount` GoatCounter counter in the footer (IMM-03, IMM-04)
-- [ ] 02-03: GoatCounter activation with the user's site code, plus full visual sweep in both themes (IMM-01..IMM-05)
+- [x] 02-02: Live data — `useClock` Alegrete clock in the process chip, `useViewCount` GoatCounter counter in the footer (IMM-03, IMM-04 shipped inert)
+- [x] 02-03: Full visual sweep in both themes, approved. GoatCounter activation deferred by user — IMM-04 stays open, counter ships inert/hidden.
 
 ## Progress
 
@@ -62,4 +62,4 @@ Phase 1 → Phase 2
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Ship theme toggle | 1/1 | Complete | 2026-07-30 |
-| 2. Console immersion | 2/3 | In Progress|  |
+| 2. Console immersion | 3/3 | Complete (IMM-04 deferred) | 2026-07-31 |
