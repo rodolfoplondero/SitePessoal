@@ -7,14 +7,22 @@
 
 ### Theme
 
-- [ ] **THEME-01**: User can manually toggle light/dark theme via Navbar control
-- [ ] **THEME-02**: Manual theme choice persists across page reloads
-- [ ] **THEME-03**: Site still respects OS `prefers-color-scheme` when no manual override is set
+- [x] **THEME-01**: User can manually toggle light/dark theme via Navbar control
+- [x] **THEME-02**: Manual theme choice persists across page reloads
+- [x] **THEME-03**: Site still respects OS `prefers-color-scheme` when no manual override is set
 
 ### Content
 
-- [ ] **CONT-01**: `ProcessFlow` component replaces `Avatar` and is wired into `App.jsx`'s composition
-- [ ] **CONT-02**: All sections render correctly in both light and dark themes (no unreadable text/contrast issues)
+- [x] **CONT-01**: `ProcessFlow` component replaces `Avatar` and is wired into `App.jsx`'s composition
+- [x] **CONT-02**: All sections render correctly in both light and dark themes (no unreadable text/contrast issues)
+
+### Immersion
+
+- [x] **IMM-01**: Site has a subtle CRT scanline overlay, disabled under `prefers-reduced-motion`
+- [x] **IMM-02**: Hero eyebrow/boot line plays a typewriter reveal on load
+- [x] **IMM-03**: Process-ID chip shows a real, ticking local clock (Alegrete timezone)
+- [ ] **IMM-04**: A live page-view count (GoatCounter) renders on the site (ships inert as of 02-02 — activation pending GoatCounter site code, see 02-03)
+- [x] **IMM-05**: Nav/section-index hover states show console-style `$` affordances
 
 ## v2 Requirements
 
@@ -38,15 +46,21 @@ Deferred to future release. Tracked but not in current roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| THEME-01 | Phase 1 | In Progress |
-| THEME-02 | Phase 1 | In Progress |
-| THEME-03 | Phase 1 | In Progress |
-| CONT-01 | Phase 1 | In Progress |
-| CONT-02 | Phase 1 | In Progress |
+| THEME-01 | Phase 1 | Complete |
+| THEME-02 | Phase 1 | Complete |
+| THEME-03 | Phase 1 | Complete |
+| CONT-01 | Phase 1 | Complete |
+| CONT-02 | Phase 1 | Complete |
+| IMM-01 | Phase 2 | Complete |
+| IMM-02 | Phase 2 | Complete |
+| IMM-03 | Phase 2 | Complete |
+| IMM-04 | Phase 2 | Pending (inert, needs GoatCounter code — 02-03) |
+| IMM-05 | Phase 2 | Complete |
 
 **Coverage:**
-- v1 requirements: 5 total
-- Mapped to phases: 5
+
+- v1 requirements: 10 total
+- Mapped to phases: 10
 - Unmapped: 0 ✓
 
 ---

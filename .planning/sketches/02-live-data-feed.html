@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Sketch B — Live data feed</title>
+<style>
+:root {
+  --color-bg: #0b0e13;
+  --color-bg-alt: #131822;
+  --color-bg-alt-2: #1a2130;
+  --color-text: #eef1f5;
+  --color-text-muted: #8992a3;
+  --color-accent: #f5a83c;
+  --color-accent-strong: #ffbf5c;
+  --color-accent-soft: rgba(245, 168, 60, 0.14);
+  --color-on-accent: #14100a;
+  --color-run: #34d399;
+  --color-border: #262f3d;
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.65;
+}
+.wrap { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+.note {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  border: 1px dashed var(--color-border);
+  padding: 0.75rem 1rem;
+  margin-bottom: 2.5rem;
+  border-radius: 4px;
+}
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin: 0 0 0.4rem;
+}
+.sub { color: var(--color-text-muted); margin-bottom: 3rem; }
+section { margin-bottom: 3rem; }
+h2 { font-family: var(--font-display); font-size: 1.15rem; color: var(--color-accent); margin-bottom: 1rem; }
+
+/* --- status pill grid, real-ish metrics --- */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+.metric {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+}
+.metric__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.metric__value {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: 0.3rem;
+}
+.metric__value.is-live { color: var(--color-run); }
+.metric__sub { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text-muted); margin-top: 0.25rem; }
+
+/* --- github activity feed --- */
+.feed { list-style: none; margin: 0; padding: 0; }
+.feed li {
+  display: flex;
+  gap: 0.9rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+}
+.feed li:last-child { border-bottom: none; }
+.feed__dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--color-run);
+  margin-top: 6px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(52,211,153,0.15);
+}
+.feed__repo { font-family: var(--font-mono); color: var(--color-accent); font-size: 0.82rem; }
+.feed__msg { color: var(--color-text); }
+.feed__time { font-family: var(--font-mono); color: var(--color-text-muted); font-size: 0.78rem; margin-left: auto; white-space: nowrap; }
+
+/* --- queue tag replaced with real visitor counter --- */
+.queue-tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.queue-tag::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 1px;
+  background: var(--color-accent);
+}
+.queue-tag__count { color: var(--color-text-muted); font-weight: 400; }
+
+/* --- local time / timezone widget --- */
+.tzwidget {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 0.4rem 0.8rem;
+}
+.tzwidget strong { color: var(--color-text); }
+
+.caveat {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  margin-top: 0.75rem;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="note">SKETCH B — throwaway mockup. Real/live data replacing the static "QUEUE: X" tag. Values here are hardcoded placeholders standing in for what a real fetch would return.</div>
+  <h1>Live data feed</h1>
+  <p class="sub">Real numbers instead of decorative ones: local clock, GitHub activity, visitor count. Each needs either a tiny serverless call or a client-side API — this is still a static site.</p>
+
+  <section>
+    <h2>1 — Real metrics strip (replaces decorative status pills)</h2>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric__label">Local time (Alegrete)</div>
+        <div class="metric__value is-live" id="localtime">--:--</div>
+        <div class="metric__sub">Intl.DateTimeFormat, no API needed</div>
+      </div>
+      <div class="metric">
+        <div class="metric__label">Last commit</div>
+        <div class="metric__value">4h ago</div>
+        <div class="metric__sub">GitHub REST API, client fetch</div>
+      </div>
+      <div class="metric">
+        <div class="metric__label">Public repos</div>
+        <div class="metric__value">12</div>
+        <div class="metric__sub">GitHub REST API, client fetch</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2 — GitHub activity feed (real commits, not fake QUEUE items)</h2>
+    <ul class="feed">
+      <li>
+        <span class="feed__dot"></span>
+        <div>
+          <div class="feed__repo">rodolfoplondero.github.io</div>
+          <div class="feed__msg">Update profile data from latest LinkedIn export</div>
+        </div>
+        <span class="feed__time">2h ago</span>
+      </li>
+      <li>
+        <span class="feed__dot"></span>
+        <div>
+          <div class="feed__repo">rodolfoplondero.github.io</div>
+          <div class="feed__msg">Add light/dark theme toggle, replace Avatar with ProcessFlow</div>
+        </div>
+        <span class="feed__time">6h ago</span>
+      </li>
+      <li>
+        <span class="feed__dot"></span>
+        <div>
+          <div class="feed__repo">rpa-reframework-templates</div>
+          <div class="feed__msg">Fix queue retry backoff</div>
+        </div>
+        <span class="feed__time">1d ago</span>
+      </li>
+    </ul>
+    <p class="caveat">Real version: `GET api.github.com/users/rodolfoplondero/events/public` client-side, cache in localStorage.</p>
+  </section>
+
+  <section>
+    <h2>3 — Queue tag → real page-view count</h2>
+    <p class="queue-tag">VISITORS: <span class="queue-tag__count" id="visitors">counting…</span></p>
+    <p class="caveat">Real version needs a counter service (e.g. goatcounter, a tiny Cloudflare Worker) since this is a static site with no backend.</p>
+  </section>
+
+  <section>
+    <h2>4 — Timezone-aware "online" indicator</h2>
+    <div class="tzwidget">
+      <span id="tzdot" style="width:7px;height:7px;border-radius:50%;background:var(--color-run);"></span>
+      <span><strong id="tzstate">available</strong> · <span id="tzlocal">--:--</span> local</span>
+    </div>
+    <p class="caveat">Derives "available"/"offline hours" from actual local time, not a hardcoded dot.</p>
+  </section>
+</div>
+<script>
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function updateClocks(){
+    const d = new Date();
+    const t = pad(d.getHours())+':'+pad(d.getMinutes());
+    document.getElementById('localtime').textContent = t;
+    document.getElementById('tzlocal').textContent = t;
+    const hour = d.getHours();
+    const available = hour >= 8 && hour < 20;
+    document.getElementById('tzstate').textContent = available ? 'available' : 'offline hours';
+    document.getElementById('tzdot').style.background = available ? 'var(--color-run)' : 'var(--color-text-muted)';
+  }
+  updateClocks(); setInterval(updateClocks, 1000);
+
+  let n = 1042;
+  document.getElementById('visitors').textContent = n;
+  setInterval(() => {
+    n += Math.random() < 0.3 ? 1 : 0;
+    document.getElementById('visitors').textContent = n;
+  }, 3000);
+</script>
+</body>
+</html>

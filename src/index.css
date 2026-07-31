@@ -15,6 +15,9 @@
   --font-body: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --crt-line: rgba(0, 0, 0, 0.035);
+  --crt-blend: multiply;
+  --crt-opacity: 0.45;
   color-scheme: light;
 }
 
@@ -31,6 +34,9 @@
     --color-on-accent: #14100a;
     --color-run: #34d399;
     --color-border: #262f3d;
+    --crt-line: rgba(255, 255, 255, 0.025);
+    --crt-blend: overlay;
+    --crt-opacity: 0.5;
     color-scheme: dark;
   }
 }
@@ -47,6 +53,9 @@
   --color-on-accent: #14100a;
   --color-run: #34d399;
   --color-border: #262f3d;
+  --crt-line: rgba(255, 255, 255, 0.025);
+  --crt-blend: overlay;
+  --crt-opacity: 0.5;
   color-scheme: dark;
 }
 
@@ -62,6 +71,9 @@
   --color-on-accent: #ffffff;
   --color-run: #0e9f6e;
   --color-border: #dde3ea;
+  --crt-line: rgba(0, 0, 0, 0.035);
+  --crt-blend: multiply;
+  --crt-opacity: 0.45;
   color-scheme: light;
 }
 
@@ -119,6 +131,23 @@ ul, ol {
   flex-shrink: 0;
 }
 
+/* CRT scanline overlay */
+.crt {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--crt-line) 0px,
+    var(--crt-line) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: var(--crt-blend);
+  opacity: var(--crt-opacity);
+}
+
 /* Queue tag (section eyebrow) */
 .queue-tag {
   font-family: var(--font-mono);
@@ -139,6 +168,17 @@ ul, ol {
   border-radius: 1px;
   background: var(--color-accent);
   flex-shrink: 0;
+}
+
+.queue-tag--views {
+  justify-content: center;
+  margin: 0.75rem 0 0;
+}
+
+.queue-tag__count {
+  color: var(--color-text-muted);
+  font-weight: 400;
+  letter-spacing: normal;
 }
 
 /* Status pill */
@@ -179,6 +219,18 @@ ul, ol {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .crt {
+    display: none;
+  }
+  .hero__eyebrow-type {
+    animation: none;
+    width: auto;
+    border-right: none;
+  }
+  .hero__eyebrow .status-pill {
+    animation: none;
+    opacity: 1;
   }
   * {
     animation-duration: 0.001ms !important;
@@ -223,18 +275,42 @@ ul, ol {
 
 .navbar__brand {
   font-family: var(--font-mono);
-  font-weight: 600;
   font-size: 0.9rem;
-  color: var(--color-accent);
   letter-spacing: 0.04em;
   border: 1px solid var(--color-accent);
   border-radius: 3px;
   padding: 0.2rem 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .navbar__brand:hover {
-  text-decoration: none;
   background: var(--color-accent-soft);
+}
+
+.navbar__brand-id {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.navbar__brand-id:hover {
+  text-decoration: none;
+}
+
+.navbar__brand:hover .navbar__brand-id::after,
+.navbar__brand-id:focus-visible::after {
+  content: attr(data-hover);
+  margin-left: 0.5rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.navbar__brand-clock {
+  color: var(--color-text-muted);
+  font-weight: 400;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .navbar__links {
@@ -261,6 +337,21 @@ ul, ol {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s var(--ease);
+}
+
+.navbar__links a::before {
+  content: '$';
+  position: absolute;
+  left: 0.1rem;
+  color: var(--color-accent);
+  opacity: 0;
+  transition: opacity 0.2s var(--ease);
+}
+
+.navbar__links a:hover::before,
+.navbar__links a:focus-visible::before,
+.navbar__links a.is-active::before {
+  opacity: 1;
 }
 
 .navbar__links a:hover,
@@ -461,6 +552,32 @@ ul, ol {
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
+}
+
+.hero__eyebrow-type {
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100%;
+  width: 0;
+  border-right: 2px solid var(--color-accent);
+  animation: type 2.2s steps(var(--type-chars), end) 0.3s forwards, caret 0.9s step-end infinite;
+}
+
+@keyframes type {
+  to { width: calc(var(--type-chars) * 1ch); }
+}
+
+@keyframes caret {
+  50% { border-color: transparent; }
+}
+
+.hero__eyebrow .status-pill {
+  opacity: 0;
+  animation: fade-in 0.4s var(--ease) 2.6s forwards;
+}
+
+@keyframes fade-in {
+  to { opacity: 1; }
 }
 
 .hero h1 {
@@ -927,5 +1044,19 @@ ul, ol {
 
   .navbar__links a::after {
     display: none;
+  }
+
+  .navbar__links a::before {
+    display: none;
+  }
+
+  .navbar__brand-clock {
+    display: none;
+  }
+
+  .navbar__brand:hover .navbar__brand-id::after,
+  .navbar__brand-id:focus-visible::after {
+    content: '';
+    margin: 0;
   }
 }

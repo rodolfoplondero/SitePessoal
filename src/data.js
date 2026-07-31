@@ -9,6 +9,17 @@ export const profile = {
   github: 'https://github.com/rodolfoplondero',
   linkedin: 'https://www.linkedin.com/in/rodolfolondero',
   resumeFile: `${import.meta.env.BASE_URL}resume.pdf`,
+  bootLine: '$ whoami → Senior RPA Engineer',
+  processMeta: 'uptime: 2y 4m',
+  timezone: 'America/Sao_Paulo',
+  locale: 'pt-BR',
+}
+
+// goatCounterCode must also be set in index.html's commented GoatCounter
+// <script data-goatcounter> snippet — the two must match.
+export const analytics = {
+  goatCounterCode: '',
+  countPath: 'TOTAL',
 }
 
 export const about = `Sou Engenheiro de RPA sênior, especializado em UiPath, com experiência no desenho,
