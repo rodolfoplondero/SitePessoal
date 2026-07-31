@@ -723,12 +723,38 @@ ul, ol {
   border-bottom: 1px solid var(--color-border);
 }
 
-.project-card__cover span {
-  font-family: var(--font-mono);
-  font-size: 2.75rem;
-  font-weight: 600;
-  color: var(--color-accent);
-  opacity: 0.55;
+.project-illustration {
+  width: 78%;
+  max-width: 260px;
+}
+
+.pi-cell {
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+.pi-cell--idle {
+  fill: none;
+}
+
+.pi-cell--fill {
+  fill: var(--color-accent);
+  stroke: none;
+}
+
+.pi-line {
+  stroke: var(--color-border);
+  stroke-width: 1.5;
+}
+
+.pi-hub {
+  fill: var(--color-accent);
+}
+
+.pi-node {
+  fill: var(--color-bg-alt);
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
 }
 
 .project-card__body {
