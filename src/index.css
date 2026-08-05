@@ -232,6 +232,9 @@ ul, ol {
     animation: none;
     opacity: 1;
   }
+  .process-flow__pulse {
+    display: none;
+  }
   * {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
@@ -661,28 +664,37 @@ ul, ol {
   fill: var(--color-text-muted);
 }
 
-.process-flow__node--init .process-flow__ring {
-  stroke: var(--color-accent);
+.process-flow__node {
+  cursor: pointer;
+  text-decoration: none;
 }
 
-.process-flow__node--init .process-flow__dot {
-  fill: var(--color-accent);
+.process-flow__node:hover {
+  text-decoration: none;
 }
 
-.process-flow__node--init .process-flow__label {
-  fill: var(--color-accent);
+.process-flow__node .process-flow__ring,
+.process-flow__node .process-flow__dot {
+  transition: stroke 0.25s var(--ease), fill 0.25s var(--ease), transform 0.25s var(--ease);
+  transform-origin: center;
+  transform-box: fill-box;
 }
 
-.process-flow__node--process .process-flow__ring {
+.process-flow__node:hover .process-flow__ring,
+.process-flow__node:focus-visible .process-flow__ring {
+  transform: scale(1.08);
+}
+
+.process-flow__node--active .process-flow__ring {
   stroke: var(--color-accent);
   animation: pulse-ring 1.8s var(--ease) infinite;
 }
 
-.process-flow__node--process .process-flow__dot {
+.process-flow__node--active .process-flow__dot {
   fill: var(--color-accent);
 }
 
-.process-flow__node--process .process-flow__label {
+.process-flow__node--active .process-flow__label {
   fill: var(--color-accent);
 }
 
@@ -1153,7 +1165,9 @@ ul, ol {
   white-space: nowrap;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: var(--color-on-accent);
+  /* --color-on-accent is for text on an accent background; this sits on
+     --color-text, so the page background token is the right inverse. */
+  color: var(--color-bg);
   background: var(--color-text);
   border-radius: 6px;
   opacity: 0;

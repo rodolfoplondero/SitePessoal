@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import Reveal from './Reveal'
 import useGitHubStats from '../hooks/useGitHubStats'
+import { profile } from '../data'
 import { GitHubIcon, StarIcon } from '../icons'
 
 const TOP_LANGUAGES = 8
@@ -64,13 +65,12 @@ export default function Analytics() {
     return sorted
   }, [data, selected, sort])
 
-  // The section is an extra, not load-bearing: if the feed is unreachable the
-  // page should read exactly as it did before rather than show a broken panel.
-  if (status !== 'ready') return null
-
   const active = hovered ?? selected
-  const totals = data.profile
 
+  // The section itself always renders: #analytics is an entry in `sections`,
+  // so the navbar and the hero's ProcessFlow both link to it. Returning null
+  // on a failed fetch would leave those pointing at nothing. Only the
+  // data-dependent body is conditional.
   return (
     <section id="analytics" className="section">
       <Reveal as="p" className="queue-tag">
@@ -79,6 +79,53 @@ export default function Analytics() {
       <Reveal as="h2" className="section__title">
         Analytics
       </Reveal>
+
+      {status !== 'ready' ? (
+        <Reveal as="p" className="analytics__lead">
+          {status === 'loading' ? (
+            'Carregando dados do GitHub…'
+          ) : (
+            <>
+              Não foi possível carregar os dados agora. Eles estão sempre disponíveis no{' '}
+              <a href={profile.github} target="_blank" rel="noreferrer">
+                meu perfil no GitHub
+              </a>
+              .
+            </>
+          )}
+        </Reveal>
+      ) : (
+        <AnalyticsBody
+          data={data}
+          active={active}
+          selected={selected}
+          setSelected={setSelected}
+          setHovered={setHovered}
+          sort={sort}
+          setSort={setSort}
+          languages={languages}
+          repositories={repositories}
+        />
+      )}
+    </section>
+  )
+}
+
+function AnalyticsBody({
+  data,
+  active,
+  selected,
+  setSelected,
+  setHovered,
+  sort,
+  setSort,
+  languages,
+  repositories,
+}) {
+  const totals = data.profile
+
+  return (
+    <>
       <Reveal as="p" className="analytics__lead">
         Dados do meu GitHub, atualizados semanalmente. Passe o mouse na barra para ver cada
         linguagem e clique para filtrar os repositórios.
@@ -217,6 +264,6 @@ export default function Analytics() {
           })}
         </ul>
       </Reveal>
-    </section>
+    </>
   )
 }

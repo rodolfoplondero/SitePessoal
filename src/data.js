@@ -22,6 +22,17 @@ export const analytics = {
   countPath: 'TOTAL',
 }
 
+// Shared by Navbar (link list + scroll-spy) and ProcessFlow (node list +
+// scroll-spy) — the ids must match each section's actual <section id="...">.
+export const sections = [
+  { id: 'sobre', href: '#sobre', label: 'Sobre' },
+  { id: 'skills', href: '#skills', label: 'Skills' },
+  { id: 'projetos', href: '#projetos', label: 'Projetos' },
+  { id: 'analytics', href: '#analytics', label: 'Analytics' },
+  { id: 'curriculo', href: '#curriculo', label: 'Currículo' },
+  { id: 'contato', href: '#contato', label: 'Contato' },
+]
+
 export const about = `Sou Engenheiro de RPA sênior, especializado em UiPath, com experiência no desenho,
 desenvolvimento e suporte de automações de nível corporativo em ambientes complexos. Foco em
 soluções robustas e escaláveis com UiPath REFramework, estendidas por integrações via API e

@@ -1,23 +1,16 @@
 import { useEffect, useState } from 'react'
 import useTheme from '../hooks/useTheme'
 import useClock from '../hooks/useClock'
-import { profile } from '../data'
-
-const links = [
-  { href: '#sobre', label: 'Sobre' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#projetos', label: 'Projetos' },
-  { href: '#analytics', label: 'Analytics' },
-  { href: '#curriculo', label: 'Currículo' },
-  { href: '#contato', label: 'Contato' },
-]
+import useActiveSection from '../hooks/useActiveSection'
+import { profile, sections as links } from '../data'
+import { scrollToSection } from '../scrollToSection'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [active, setActive] = useState('')
   const [theme, toggleTheme] = useTheme()
   const clock = useClock(profile.timezone, profile.locale)
+  const active = useActiveSection(links)
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
@@ -30,34 +23,8 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    const sections = links
-      .map((link) => document.querySelector(link.href))
-      .filter(Boolean)
-
-    if (!sections.length) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((entry) => entry.isIntersecting)
-        if (visible.length > 0) {
-          setActive(`#${visible[0].target.id}`)
-        }
-      },
-      { rootMargin: '-45% 0px -50% 0px' },
-    )
-
-    sections.forEach((section) => observer.observe(section))
-    return () => observer.disconnect()
-  }, [])
-
   const handleNavClick = (event, href) => {
-    const target = document.querySelector(href)
-    if (target) {
-      event.preventDefault()
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      history.pushState(null, '', href)
-    }
+    scrollToSection(event, href)
     setOpen(false)
   }
 
