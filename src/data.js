@@ -28,6 +28,7 @@ export const sections = [
   { id: 'sobre', href: '#sobre', label: 'Sobre' },
   { id: 'skills', href: '#skills', label: 'Skills' },
   { id: 'projetos', href: '#projetos', label: 'Projetos' },
+  { id: 'analytics', href: '#analytics', label: 'Analytics' },
   { id: 'curriculo', href: '#curriculo', label: 'Currículo' },
   { id: 'contato', href: '#contato', label: 'Contato' },
 ]

@@ -1072,3 +1072,283 @@ ul, ol {
     margin: 0;
   }
 }
+
+/* ---------- Analytics ---------- */
+
+.analytics__lead {
+  max-width: 60ch;
+  margin: 0 0 2rem;
+  color: var(--color-text-muted);
+}
+
+.analytics__totals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.analytics__totals li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.analytics__figure {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.analytics__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.analytics__bar {
+  display: flex;
+  height: 14px;
+  border-radius: 7px;
+  background: var(--color-bg-alt-2);
+  /* Deliberately not overflow:hidden — the tooltips escape upwards, and
+     clipping the bar would swallow them. The ends are rounded on the first
+     and last segments instead. */
+}
+
+.analytics__segment:first-child {
+  border-radius: 7px 0 0 7px;
+}
+
+.analytics__segment:last-child {
+  border-radius: 0 7px 7px 0;
+}
+
+.analytics__segment {
+  position: relative;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  transition: opacity 0.2s var(--ease), filter 0.2s var(--ease);
+}
+
+.analytics__segment.is-dimmed {
+  opacity: 0.3;
+}
+
+.analytics__segment.is-selected {
+  filter: brightness(1.15);
+}
+
+.analytics__segment:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.analytics__tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 0.35rem 0.6rem;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  /* --color-on-accent is for text on an accent background; this sits on
+     --color-text, so the page background token is the right inverse. */
+  color: var(--color-bg);
+  background: var(--color-text);
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s var(--ease), transform 0.15s var(--ease);
+}
+
+.analytics__segment:hover .analytics__tooltip,
+.analytics__segment:focus-visible .analytics__tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.analytics__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.analytics__legend button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-text);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.analytics__legend button:hover,
+.analytics__legend button.is-selected {
+  border-color: var(--color-border);
+  background: var(--color-bg-alt);
+}
+
+.analytics__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.analytics__share {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.analytics__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 2rem 0 1rem;
+}
+
+.analytics__filter {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.analytics__clear {
+  margin-left: 0.6rem;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  cursor: pointer;
+}
+
+.analytics__sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.analytics__sort select {
+  padding: 0.35rem 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--color-text);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+}
+
+.analytics__repos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.analytics__repos a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  height: 100%;
+  padding: 0.9rem 1rem;
+  color: inherit;
+  text-decoration: none;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.analytics__repos a:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.analytics__repo-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.analytics__repo-name .icon {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+.analytics__repo-desc {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+.analytics__repo-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.analytics__repo-lang,
+.analytics__repo-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.analytics__repo-stars .icon {
+  width: 13px;
+  height: 13px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .analytics__segment,
+  .analytics__tooltip,
+  .analytics__repos a {
+    transition: none;
+  }
+}
