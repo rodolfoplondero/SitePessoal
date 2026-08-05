@@ -502,30 +502,8 @@ ul, ol {
   to { transform: translate(30px, -20px) scale(1.08); }
 }
 
-.hero__grid {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-.hero__visual {
-  display: flex;
-  justify-content: center;
-  opacity: 0;
-  transform: translateY(18px);
-  animation: rise 0.9s var(--ease) forwards;
-  animation-delay: 0.6s;
-}
-
-@media (max-width: 860px) {
-  .hero__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero__visual {
-    order: -1;
-  }
+.hero__content {
+  max-width: 640px;
 }
 
 .hero__content > * {
@@ -629,7 +607,38 @@ ul, ol {
   color: var(--color-accent);
 }
 
-/* Process flow (signature element) */
+/* Process flow (signature element) — docked, visible across the whole
+   page scroll rather than confined to the hero. Only on wide viewports:
+   below ~1500px there isn't enough side margin beside the centered
+   content column to avoid overlapping it, so it's hidden there and
+   section navigation falls back to the Navbar links + mobile menu. */
+.process-flow-dock {
+  display: none;
+}
+
+@media (min-width: 1500px) {
+  .process-flow-dock {
+    display: block;
+    position: fixed;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    z-index: 15;
+    width: 140px;
+    opacity: 0;
+    animation: fade-in 0.8s var(--ease) forwards;
+    animation-delay: 0.9s;
+  }
+}
+
+@keyframes fade-in {
+  to { opacity: 1; }
+}
+
+.process-flow-dock .process-flow {
+  width: 100%;
+}
+
 .process-flow {
   width: min(220px, 60vw);
   height: auto;

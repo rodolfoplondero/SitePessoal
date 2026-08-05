@@ -1,5 +1,4 @@
 import { profile } from '../data'
-import ProcessFlow from './ProcessFlow'
 import { DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon } from '../icons'
 
 export default function Hero() {
@@ -8,49 +7,43 @@ export default function Hero() {
       <span className="hero__blob hero__blob--a" aria-hidden="true" />
       <span className="hero__blob hero__blob--b" aria-hidden="true" />
 
-      <div className="hero__grid">
-        <div className="hero__content">
-          <p className="hero__eyebrow">
-            <span
-              className="hero__eyebrow-type"
-              style={{ '--type-chars': profile.bootLine.length }}
-            >
-              {profile.bootLine}
-            </span>
-            <span className="status-pill status-pill--run">● RUNNING</span>
-          </p>
-          <h1>{profile.name}</h1>
-          <h2>{profile.role}</h2>
-          <p className="hero__tagline">{profile.tagline}</p>
+      <div className="hero__content">
+        <p className="hero__eyebrow">
+          <span
+            className="hero__eyebrow-type"
+            style={{ '--type-chars': profile.bootLine.length }}
+          >
+            {profile.bootLine}
+          </span>
+          <span className="status-pill status-pill--run">● RUNNING</span>
+        </p>
+        <h1>{profile.name}</h1>
+        <h2>{profile.role}</h2>
+        <p className="hero__tagline">{profile.tagline}</p>
 
-          <div className="hero__actions">
-            <a className="btn btn--primary" href="#projetos">
-              Ver projetos
-            </a>
-            <a className="btn btn--ghost" href={profile.resumeFile} download>
-              <DownloadIcon className="icon" />
-              Baixar currículo
-            </a>
-          </div>
-
-          <div className="hero__social">
-            <a href={profile.github} target="_blank" rel="noreferrer">
-              <GitHubIcon className="icon" />
-              GitHub
-            </a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer">
-              <LinkedInIcon className="icon" />
-              LinkedIn
-            </a>
-            <a href={`mailto:${profile.email}`}>
-              <MailIcon className="icon" />
-              Email
-            </a>
-          </div>
+        <div className="hero__actions">
+          <a className="btn btn--primary" href="#projetos">
+            Ver projetos
+          </a>
+          <a className="btn btn--ghost" href={profile.resumeFile} download>
+            <DownloadIcon className="icon" />
+            Baixar currículo
+          </a>
         </div>
 
-        <div className="hero__visual">
-          <ProcessFlow name={profile.name} />
+        <div className="hero__social">
+          <a href={profile.github} target="_blank" rel="noreferrer">
+            <GitHubIcon className="icon" />
+            GitHub
+          </a>
+          <a href={profile.linkedin} target="_blank" rel="noreferrer">
+            <LinkedInIcon className="icon" />
+            LinkedIn
+          </a>
+          <a href={`mailto:${profile.email}`}>
+            <MailIcon className="icon" />
+            Email
+          </a>
         </div>
       </div>
     </section>
