@@ -4,7 +4,7 @@ import { scrollToSection } from '../scrollToSection'
 
 const CENTER_X = 110
 const RADIUS = 18
-const SPACING = 64
+const SPACING = 84
 const START_Y = 36
 const LABEL_OFFSET = 36
 
